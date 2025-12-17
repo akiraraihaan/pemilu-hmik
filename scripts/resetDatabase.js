@@ -3,19 +3,25 @@ const { MongoClient } = require('mongodb');
 
 const uri = process.env.MONGODB_URI;
 
-async function resetDatabase() {
+async function resetAllCollections() {
   const client = new MongoClient(uri);
   try {
     await client.connect();
     const db = client.db();
     
-    // Hapus semua data dari collection mahasiswa
-    const result = await db.collection('mahasiswa').deleteMany({});
-    console.log(`Database berhasil direset! ${result.deletedCount} data mahasiswa dihapus.`);
+    // Hapus semua data dari semua collections
+    const collections = await db.listCollections().toArray();
+    
+    for (const collection of collections) {
+      const result = await db.collection(collection.name).deleteMany({});
+      console.log(`Collection ${collection.name}: ${result.deletedCount} data dihapus.`);
+    }
+    
+    console.log('✅ Seluruh database berhasil direset!');
     
   } finally {
     await client.close();
   }
 }
 
-resetDatabase().catch(console.error);
+resetAllCollections().catch(console.error);
