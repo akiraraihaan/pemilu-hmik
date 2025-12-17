@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useContext, useState, useEffect, MouseEvent } from "react";
-import feedigpaslon1 from "../../../public/assets/feedigpaslon1.png";
-import feedigpaslon2 from "../../../public/assets/feedigpaslon2.png";
-import feedigpaslon3 from "../../../public/assets/feedigpaslon3.png";
+
 
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
@@ -162,7 +160,7 @@ const Form = () => {
 
               <td className="sm:w-full md:w-1/3 px-2">
                 <div className="flex flex-col max-w-full h-full rounded overflow-hidden shadow-lg bg-white ">
-                  <Image className="w-full h-auto" src={feedigpaslon1} width={1500} height={2500} alt="Foto kandidat 1" />
+                  <Image className="w-full h-auto" src="/assets/feedigpaslon1.png" width={1500} height={2500} alt="Foto kandidat 1" />
 
                   <div className="px-6 py-4">
                     <div className="text-black font-bold text-xl mb-2">Bambang Istijab - Raihan Akira Rahmaputra</div>
@@ -207,7 +205,7 @@ const Form = () => {
 
               <td className="sm:w-full md:w-1/3 px-2">
                 <div className="flex flex-col max-w-full h-full rounded overflow-hidden shadow-lg bg-white">
-                  <Image className="w-full" src={feedigpaslon2} width={1500} height={2500} alt="Foto kandidat 2" />
+                  <Image className="w-full" src="/assets/feedigpaslon2.png" width={1500} height={2500} alt="Foto kandidat 2" />
                   <div className="">
                     <div className="px-6 py-4">
                       <div className="text-black font-bold text-xl mb-2">Fauzan Azhima - Alghifari Rasyid Zola</div>
@@ -260,7 +258,7 @@ const Form = () => {
 
               <td className="sm:w-full md:w-1/3 px-2">
                 <div className="flex flex-col max-w-full h-full rounded overflow-hidden shadow-lg bg-white">
-                  <Image className="w-full" src={feedigpaslon3} width={1500} height={2500} alt="Foto kandidat 3" />
+                  <Image className="w-full" src="/assets/feedigpaslon3.png" width={1500} height={2500} alt="Foto kandidat 3" />
                   <div className="">
                     <div className="px-6 py-4">
                       <div className="text-black font-bold text-xl mb-2">Haekal Putra Alzharis - Nurul Humam Mutarobi</div>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { ChangeEvent, useState, useContext, useEffect } from "react";
-import hmklogo from "../../public/assets/hima.png";
+
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -22,38 +22,34 @@ const Home = () => {
     console.log(APIEndpoint)
 
     try {
-      console.log("ping")
-      console.log(`${APIEndpoint}api/getToken?nim=${input.nim}&email=${input.email}`)
+      console.log("Mengirim request ke API...");
+      const url = `${APIEndpoint}api/getToken?NIM=${input.nim}&EMAIL=${input.email}`;
+      console.log("URL:", url);
       
-      const response =await fetch(`${APIEndpoint}api/getToken?NIM=${input.nim}&EMAIL=${input.email}`, {
+      const response = await fetch(url, {
         method: 'PUT',
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
         },
-        body: JSON.stringify({
-          "nim": input.nim,
-          "email": input.email,
-        }),
       });
 
-      console.log(response)
+      console.log("Response status:", response.status);
+      console.log("Response OK:", response.ok);
+      
       if (response.ok) {
-        console.log("ping")
-
+        const data = await response.json();
+        console.log("Response data:", data);
         router.push("/token");
       } else {
-        // Handle failed response condition as needed
-      }
-
-      if (!response.ok) {
-        console.log("ping")
-        throw new Error('Failed to fetch data');
+        const errorData = await response.json().catch(() => ({}));
+        console.error("API Error:", errorData);
+        alert(`Error: ${errorData.error || 'Terjadi kesalahan'}`);
       }
       
     } catch (error) {
       console.error('Fetch error:', error);
-      // Handle fetch error as needed
+      alert('Gagal terhubung ke server. Pastikan server berjalan.');
     }
   };
 
@@ -80,7 +76,7 @@ const Home = () => {
         }}
       >
         <div className="flex justify-center items-center p-10">
-          <Image src={hmklogo} width={300} height={300} alt="Logo HMIK" />
+          <Image src="/assets/hima.png" width={300} height={300} alt="Logo HMIK" />
         </div>
 
         <form

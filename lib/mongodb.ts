@@ -27,7 +27,7 @@ async function dbConnect() {
 
     if (!cached.promise) {
         const clientOptions = {
-            serverApi: { version: '1', strict: true, deprecationErrors: true },
+            serverApi: { version: '1' as const, strict: true, deprecationErrors: true },
         };
         cached.promise = mongoose.connect(uri, clientOptions).then((mongoose) => {
             console.log('Connected to MongoDB');
