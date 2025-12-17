@@ -46,7 +46,7 @@ export default function ResultPage() {
           height: '100%',
         }}
       >
-        <div className="text-xl text-white font-bold">Loading results...</div>
+        <div className="text-xl text-gray-800 font-bold">Loading results...</div>
       </div>
     );
   }
@@ -82,7 +82,7 @@ export default function ResultPage() {
       }}
     >
       <div className="max-w-4xl mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center mb-8 text-white">
+        <h1 className="text-4xl font-bold text-center mb-8 text-blue-900">
           Hasil Voting Pemira HMIK
         </h1>
 
