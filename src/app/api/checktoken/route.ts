@@ -19,6 +19,15 @@ export async function PUT(request: NextRequest) {
             return NextResponse.json({ error: 'Not found' }, { status: 404 });
         }
 
+        // Validasi: Cek apakah sudah voting
+        if (document.STATUS_VOTE) {
+            return NextResponse.json(
+                { error: 'Token sudah digunakan untuk voting' },
+                { status: 403 }
+            );
+        }
+
+        // Update status vote jika belum voting
         await mahasiswa.updateOne(
             { TOKEN },
             { $set: { STATUS_VOTE: true } }
