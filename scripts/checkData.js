@@ -19,19 +19,11 @@ async function checkData() {
     });
     
     // Cek NIM spesifik
-    const testNIM = '105222040';
+    const testNIM = 105222040;
     const specificData = await mahasiswa.findOne({ NIM: testNIM });
     console.log('\nCari NIM 105222040:');
     console.log(specificData);
     
-    // Cek dengan regex untuk NIM yang mirip
-    const regexData = await mahasiswa.find({ NIM: { $regex: /105222040/ } }).toArray();
-    console.log('\nCari NIM dengan regex "105222040":');
-    console.log('Found:', regexData.length, 'documents');
-    regexData.forEach((doc, index) => {
-      console.log(`${index + 1}. NIM: "${doc.NIM}"`);
-    });
-
   } finally {
     await client.close();
   }
